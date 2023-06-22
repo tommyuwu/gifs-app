@@ -3,10 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
+    "build:href": "ng build --base-href ./",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "del:docs": "del docs",
+    "copy:dist": "copyfiles dist/gifs-app/* ./docs -f",
+    "build:github": "npm run del:docs && npm run build:href && npm run copy:dist"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +31,8 @@
     "@angular/cli": "~15.2.6",
     "@angular/compiler-cli": "^15.2.0",
     "@types/jasmine": "~4.3.0",
+    "copyfiles": "^2.4.1",
+    "del-cli": "^5.0.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
